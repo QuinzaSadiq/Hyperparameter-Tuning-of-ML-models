@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Forest Classifier Results</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+      }
+      h2 {
+        color: #2980b9;
+      }
+      h3 {
+        color: #e74c3c;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      pre {
+        background-color: #ecf0f1;
+        padding: 10px;
+        border-radius: 5px;
+        overflow: auto;
+      }
+      img {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+      .results {
+        margin-bottom: 30px;
+      }
+      .params {
+        background-color: #d5dbdb;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+      }
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+        .container {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random Forest Classifier Results</h1>
+
+      <div class="results">
+        <h2>Grid Search Results:</h2>
+        <p>
+          <strong>Best Parameters (Grid Search):</strong>
+          <br /><br />
+          <span class="params">{{ best_params_grid }}</span>
+        </p>
+        <p><strong>Accuracy (Grid Search):</strong> {{ accuracy_grid }}</p>
+        <h3>Classification Report (Grid Search):</h3>
+        <pre>{{ classification_report_grid }}</pre>
+      </div>
+
+      <h3>Grid Search Heatmap:</h3>
+      <img
+        src="{% static 'images/grid_search_heatmap.png' %}"
+        alt="Grid Search Heatmap"
+      />
+
+      <div class="results">
+        <h2>Random Search Results:</h2>
+        <p>
+          <strong>Best Parameters (Random Search):</strong>
+          <br /><br />
+          <span class="params">{{ best_params_random }}</span>
+        </p>
+        <p><strong>Accuracy (Random Search):</strong> {{ accuracy_random }}</p>
+        <h3>Classification Report (Random Search):</h3>
+        <pre>{{ classification_report_random }}</pre>
+      </div>
+    </div>
+  </body>
+</html>
